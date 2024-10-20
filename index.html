@@ -4,6 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello!</title>
+    <script>
+        function executeDragAndDrop() {
+            const wrapper = document.createElement('div');
+            wrapper.style.position = 'fixed';
+            wrapper.style.top = '50%';
+            wrapper.style.left = '50%';
+            wrapper.style.transform = 'translate(-50%, -50%)';
+            wrapper.style.zIndex = '9999';
+            wrapper.style.textAlign = 'center';
+
+            const mainButton = document.createElement('button');
+            mainButton.textContent = 'Click Me';
+            mainButton.style.padding = '15px 30px';
+            mainButton.style.backgroundColor = '#3498db';
+            mainButton.style.color = 'white';
+            mainButton.style.border = 'none';
+            mainButton.style.cursor = 'pointer';
+            mainButton.style.fontSize = '18px';
+
+            const dropdown = document.createElement('div');
+            dropdown.style.display = 'none';
+            dropdown.style.marginTop = '10px';
+            
+            let isMergerMode = false, isResizerMode = false;
+            const selectedForMerge = [];
+
+            function makeDraggableOnClick(element) {
+                element.style.position = 'absolute';
+                let offsetX, offsetY, isDragging = false;
+                element.onmousedown = function(event) {
+                    isDragging = true;
+                    offsetX = event.clientX - element.getBoundingClientRect().left;
+                    offsetY = event.clientY - element.getBoundingClientRect().top;
+
+                    function onMouseMove(event) {
+                        if (isDragging) {
+                            element.style.left = event.pageX - offsetX + 'px';
+                            element.style.top = event.pageY - offsetY + 'px';
+                        }
+                    }
+
+                    document.addEventListener('mousemove', onMouseMove);
+                    document.onmouseup = function() {
+                        isDragging = false;
+                        document.removeEventListener('mousemove', onMouseMove);
+                        document.onmouseup = null;
+                    };
+                };
+                element.ondragstart = function() {
+                    return false;
+                };
+            }
+
+            function makeResizable(element) {
+                const resizer = document.createElement('div');
+                resizer.style.width = '10px';
+                resizer.style.height = '10px';
+                resizer.style.backgroundColor = 'blue';
+                resizer.style.position = 'absolute';
+                resizer.style.right = '0';
+                resizer.style.bottom = '0';
+                resizer.style.cursor = 'se-resize';
+                element.appendChild(resizer);
+
+                resizer.onmousedown = function(event) {
+                    if (!isResizerMode) return;
+                    event.preventDefault();
+
+                    let originalWidth = parseInt(window.getComputedStyle(element).width, 10);
+                    let originalHeight = parseInt(window.getComputedStyle(element).height, 10);
+                    let originalX = event.clientX;
+                    let originalY = event.clientY;
+
+                    function onMouseMove(event) {
+                        element.style.width = originalWidth + (event.clientX - originalX) + 'px';
+                        element.style.height = originalHeight + (event.clientY - originalY) + 'px';
+                    }
+
+                    document.addEventListener('mousemove', onMouseMove);
+                    document.onmouseup = function() {
+                        document.removeEventListener('mousemove', onMouseMove);
+                        document.onmouseup = null;
+                    };
+                };
+            }
+
+            const addImageButton = document.createElement('button');
+            addImageButton.textContent = 'Add Image';
+            addImageButton.style.padding = '10px';
+            addImageButton.style.margin = '5px 0';
+            addImageButton.style.width = '100%';
+            addImageButton.style.backgroundColor = '#2ecc71';
+            addImageButton.style.color = 'white';
+            addImageButton.style.border = 'none';
+            addImageButton.style.cursor = 'pointer';
+            
+            dropdown.appendChild(addImageButton);
+
+            wrapper.appendChild(mainButton);
+            wrapper.appendChild(dropdown);
+            document.body.appendChild(wrapper);
+
+            mainButton.addEventListener('click', function() {
+                dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Hello!</h1>
+    <a href="#" onclick="executeDragAndDrop()">Drag and Drop</a>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello!</title>
 </head>
 <body>
     <h1>Hello!</h1>
