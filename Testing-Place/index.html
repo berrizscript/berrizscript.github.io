@@ -11,6 +11,11 @@
             margin: 0;
             padding: 20px;
             background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
         }
 
         h1 {
@@ -71,6 +76,17 @@
             top: 20px;
             left: 20px;
         }
+
+        .big-square {
+            width: 45vw;
+            height: 90vh;
+            background-color: #888;
+            border-radius: 20px;
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            z-index: -1; /* To make sure it stays behind the content */
+        }
     </style>
 </head>
 <body>
@@ -87,6 +103,8 @@
 
         <p class="instruction-text">Alternatively do Ctrl-Shift-i</p>
     </div>
+
+    <div class="big-square"></div>
 
     <script>
         function executeJS() {
