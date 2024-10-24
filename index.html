@@ -13,6 +13,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Stack containers vertically */
             height: 100vh;
             background-color: #f4f4f9;
         }
@@ -22,8 +23,9 @@
             background-color: #fff;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px; /* Add space between the two containers */
         }
-        h1 {
+        h1, h2 {
             font-size: 36px;
             margin-bottom: 20px;
             color: #333;
@@ -55,20 +57,10 @@
             color: #555;
             margin-top: 10px;
         }
-        /* Updated CSS for larger image in the top-left corner */
-        .top-left-logo {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            width: 250px; /* Increased size */
-            height: auto;
-        }
     </style>
 </head>
 <body>
-    <!-- Larger image positioned in the top-left corner -->
-    <img src="folder/IMG_4043.jpeg" alt="Logo" class="top-left-logo">
-
+    <!-- First container with the title and buttons -->
     <div class="container">
         <h1>Welcome to my page!</h1>
         <div class="button-container">
@@ -79,6 +71,21 @@
             <div class="button-group">
                 <button class="rounded-button" onclick="window.location.href='#'">My Javascripts</button>
                 <p>Drag and Drop js or click to try!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second container for the "Misc" section with WIP buttons -->
+    <div class="container">
+        <h2>Misc</h2>
+        <div class="button-container">
+            <div class="button-group">
+                <button class="rounded-button" onclick="window.location.href='#'">WIP</button>
+                <p>Sorry not anything yet!</p>
+            </div>
+            <div class="button-group">
+                <button class="rounded-button" onclick="window.location.href='#'">WIP</button>
+                <p>Sorry not anything yet!</p>
             </div>
         </div>
     </div>
