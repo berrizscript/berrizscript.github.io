@@ -3,18 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drag and Drop</title>
+    <title>Welcome to my page!</title>
+    <link rel="icon" type="image/png" href="folder/IMG_4067.png">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .button-group {
+            text-align: center;
+        }
+        .rounded-button {
+            padding: 10px 20px;
+            background-color: #165B33;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .rounded-button:hover {
+            background-color: #146B3A;
+        }
+        p {
+            font-size: 14px;
+            color: #555;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-
-<h1>Drag and Drop</h1>
-<a href="javascript:let container=document.createElement('div');container.style.position='absolute';container.style.top='50%';container.style.left='50%';container.style.transform='translate(-50%, -50%)';container.style.display='flex';container.style.flexDirection='column';container.style.alignItems='center';document.body.appendChild(container);let mainButton=document.createElement('button');mainButton.textContent='Show Dropdown';mainButton.style.padding='10px 20px';mainButton.style.fontSize='16px';mainButton.style.cursor='pointer';mainButton.style.background='linear-gradient(to right, green 25%, red 25%, red 50%, green 50%, green 75%, red 75%)';mainButton.style.fontFamily='Poppins, sans-serif';mainButton.style.color='white';mainButton.style.border='none';mainButton.style.borderRadius='5px';container.appendChild(mainButton);let dropdown=document.createElement('div');dropdown.style.maxHeight='0';dropdown.style.overflow='hidden';dropdown.style.transition='max-height 0.5s ease-out, opacity 0.5s ease-out';dropdown.style.opacity='0';dropdown.style.borderRadius='5px';dropdown.style.width='200px';container.appendChild(dropdown);let styleElement=document.createElement('style');styleElement.appendChild(document.createTextNode(`.dropdown-button{display:block;width:100%;margin-bottom:5px;padding:10px;background-color:red;color:white;border:none;cursor:pointer;border-radius:5px;font-size:16px;transition:background-color 0.3s ease;font-family:'Lexend', sans-serif}.dropdown-button:nth-child(even){background-color:green}.dropdown-button:hover{background-color:#0056b3}.draggable{position:absolute;cursor:move}.grey-square{position:absolute;width:5px;height:300px;background-color:grey;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.5s ease-in-out,width 0.3s ease-in-out;top:50%;left:50%;transform:translate(-50%, -50%)}.shoutout-text{font-size:6px;color:#333;text-align:center;margin-top:10px}.highlighted{border:2px solid rgba(255,165,0,0.4);position:relative}.resize-circle{position:absolute;width:10px;height:10px;background-color:lightblue;border-radius:50%;right:0;bottom:0;cursor:se-resize}.remove-highlight-btn{position:absolute;top:-10px;left:-10px;background-color:red;color:white;font-size:10px;width:15px;height:15px;text-align:center;border-radius:50%;cursor:pointer}`));document.head.appendChild(styleElement);let addTextButton=document.createElement('button');addTextButton.textContent='Add Text';addTextButton.className='dropdown-button';dropdown.appendChild(addTextButton);let addImageButton=document.createElement('button');addImageButton.textContent='Add Image';addImageButton.className='dropdown-button';dropdown.appendChild(addImageButton);let button3=document.createElement('button');button3.textContent='Add Button';button3.className='dropdown-button';dropdown.appendChild(button3);let button4=document.createElement('button');button4.textContent='Resized Button';button4.className='dropdown-button';dropdown.appendChild(button4);let shoutoutText=document.createElement('div');shoutoutText.textContent='Shoutout to AXOLOTL77';shoutoutText.className='shoutout-text';dropdown.appendChild(shoutoutText);mainButton.addEventListener('click',()=>{if(dropdown.style.maxHeight==='0px'||dropdown.style.maxHeight===''){dropdown.style.maxHeight='200px';dropdown.style.opacity='1'}else{dropdown.style.maxHeight='0';dropdown.style.opacity='0'}});function makeDraggable(element){let offsetX,offsetY;element.onmousedown=(e)=>{e.preventDefault();if(e.target.classList.contains('resize-circle')){return;}offsetX=e.clientX-element.offsetLeft;offsetY=e.clientY-element.offsetTop;document.onmousemove=(e)=>{element.style.left=(e.clientX-offsetX)+'px';element.style.top=(e.clientY-offsetY)+'px'};document.onmouseup=()=>{document.onmousemove=null;document.onmouseup=null}}}addTextButton.addEventListener('click',()=>{const userInput=prompt('Enter the text to add:');if(userInput){const textSize=parseInt(prompt('Enter text size (1-70):'),10);if(textSize>=1&&textSize<=70){const newTextElement=document.createElement('div');newTextElement.textContent=userInput;newTextElement.className='draggable';newTextElement.style.position='absolute';newTextElement.style.left='50%';newTextElement.style.top='50%';newTextElement.style.transform='translate(-50%, -50%)';newTextElement.style.fontSize=textSize+'px';document.body.appendChild(newTextElement);makeDraggable(newTextElement);}}});addImageButton.addEventListener('click',()=>{let greySquare=document.createElement('div');greySquare.className='grey-square';document.body.appendChild(greySquare);setTimeout(()=>{greySquare.style.width='300px';greySquare.style.opacity='1'},100);greySquare.addEventListener('dragover',(e)=>{e.preventDefault()});greySquare.addEventListener('drop',(e)=>{e.preventDefault();const file=e.dataTransfer.files[0];if(file&&file.type.startsWith('image/')){const reader=new FileReader();reader.onload=(event)=>{const img=document.createElement('img');img.src=event.target.result;img.className='draggable';img.style.width='100px';img.style.height='100px';img.style.position='absolute';img.style.top='100px';img.style.left='300px';document.body.appendChild(img);makeDraggable(img);greySquare.style.opacity='0';setTimeout(()=>{document.body.removeChild(greySquare)},500)};reader.readAsDataURL(file)}})});button3.addEventListener('click',()=>{let btnText=prompt('Enter button text:');let btnJs=prompt('Enter JavaScript to execute when button is pressed (optional):');if(btnText){let newButton=document.createElement('button');newButton.textContent=btnText;newButton.className='draggable';newButton.style.position='absolute';newButton.style.left='50%';newButton.style.top='50%';newButton.style.transform='translate(-50%, -50%)';newButton.style.padding='10px 20px';newButton.style.fontSize='16px';newButton.style.cursor='pointer';newButton.style.backgroundColor='#28a745';newButton.style.color='white';newButton.style.border='none';newButton.style.borderRadius='5px';document.body.appendChild(newButton);makeDraggable(newButton);if(btnJs){newButton.addEventListener('click',()=>{eval(btnJs)})}newButton.addEventListener('click',()=>{newButton.style.transform='scale(1.2)';setTimeout(()=>{newButton.style.transform='scale(1)'},100)})}});let resizedModeActive=false;button4.addEventListener('click',()=>{resizedModeActive=!resizedModeActive;if(resizedModeActive){button4.textContent='Click on an object to resize';}else{button4.textContent='Resized Button';}});document.body.addEventListener('click',(e)=>{if(resizedModeActive){let clickedElement=e.target;if(clickedElement.classList.contains('draggable')){clickedElement.classList.add('highlighted');let resizeCircle=document.createElement('div');resizeCircle.className='resize-circle';clickedElement.appendChild(resizeCircle);resizeCircle.onmousedown=(ev)=>{ev.preventDefault();let initialWidth=clickedElement.offsetWidth;let initialHeight=clickedElement.offsetHeight;let initialX=ev.clientX;let initialY=ev.clientY;document.onmousemove=(ev)=>{let newWidth=initialWidth+(ev.clientX-initialX);let newHeight=initialHeight+(ev.clientY-initialY);clickedElement.style.width=newWidth+'px';clickedElement.style.height=newHeight+'px';};document.onmouseup=()=>{document.onmousemove=null;document.onmouseup=null}};let removeBtn=document.createElement('div');removeBtn.className='remove-highlight-btn';removeBtn.textContent='X';clickedElement.appendChild(removeBtn);removeBtn.onclick=()=>{clickedElement.classList.remove('highlighted');clickedElement.removeChild(resizeCircle);clickedElement.removeChild(removeBtn);resizedModeActive=false;button4.textContent='Resized Button';}}}});
-">Web Editor</a>
-
+    <div class="container">
+        <h1>Welcome to my page!</h1>
+        <div class="button-container">
+            <div class="button-group">
+                <button class="rounded-button" onclick="window.location.href='https://berrzscript.github.io/Testing-Place'">Testing Place</button>
+                <p>Easily insert javascript!</p>
+            </div>
+            <div class="button-group">
+                <button class="rounded-button" onclick="window.location.href='#'">My Javascripts</button>
+                <p>Drag and Drop js or click to try!</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
