@@ -3,38 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Alternator</title>
+    <title>Pixel</title>
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            height: 100vh;
+        body, html {
             margin: 0;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
         }
-        #bottom-image {
+        img {
             max-width: 100%;
             height: auto;
-            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-    <img id="bottom-image" src="Assets/pixil-frame-0.png" alt="Alternating Image">
+    <img id="image" src="Assets/pixil-frame-0.png" alt="Alternating Image">
 
     <script>
-        const imageElement = document.getElementById('bottom-image');
-        const images = ["Assets/pixil-frame-0.png", "Assets/pixil-frame-0 2.png"];
+        const images = [
+            'Assets/pixil-frame-0.png',
+            'Assets/pixil-frame-0 2.png'
+        ];
         let currentImageIndex = 0;
 
-        setInterval(() => {
+        function changeImage() {
             currentImageIndex = (currentImageIndex + 1) % images.length;
-            imageElement.src = images[currentImageIndex];
-        }, 2000);
+            document.getElementById('image').src = images[currentImageIndex];
+        }
+
+        setInterval(changeImage, 2000);
     </script>
-    
+
 </body>
 </html>
