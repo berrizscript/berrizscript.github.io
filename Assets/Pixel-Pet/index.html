@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Alternator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #bottom-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="bottom-image" src="Assets/pixil-frame-0.png" alt="Alternating Image">
+
+    <script>
+        const imageElement = document.getElementById('bottom-image');
+        const images = ["Assets/pixil-frame-0.png", "Assets/pixil-frame-0 2.png"];
+        let currentImageIndex = 0;
+
+        setInterval(() => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            imageElement.src = images[currentImageIndex];
+        }, 2000);
+    </script>
+    
+</body>
+</html>
