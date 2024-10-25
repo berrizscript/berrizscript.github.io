@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel</title>
+    <title>Centered Image</title>
     <style>
-        body, html {
+        body {
             margin: 0;
-            padding: 0;
-            height: 100%;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
         }
         img {
             max-width: 100%;
@@ -21,23 +19,6 @@
     </style>
 </head>
 <body>
-
-    <img id="image" src="Assets/pixil-frame-0.png" alt="Alternating Image">
-
-    <script>
-        const images = [
-            'Assets/pixil-frame-0.png',
-            'Assets/pixil-frame-0 2.png'
-        ];
-        let currentImageIndex = 0;
-
-        function changeImage() {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            document.getElementById('image').src = images[currentImageIndex];
-        }
-
-        setInterval(changeImage, 2000);
-    </script>
-
+    <img src="Assets/Pixel1.png" alt="Centered Image">
 </body>
 </html>
