@@ -8,9 +8,12 @@
 <body>
     <h1>Play Sound</h1>
     
-    <audio autoplay>
+    <audio id="audioPlayer">
         <source src="https://github.com/berrizscript/berrizscript.github.io/raw/refs/heads/main/Sounds/copy_544E6632-3514-48D5-B0A7-57E0FAC84EB5.aiff" type="audio/aiff">
     </audio>
+    
+    <!-- Play button to trigger audio -->
+    <button onclick="document.getElementById('audioPlayer').play()">Play Sound</button>
 
 </body>
 </html>
