@@ -1,201 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Pet!</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            overflow: hidden; /* Prevent scrolling */
-            position: relative;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            cursor: pointer;
-        }
-        /* Characters Button */
-        #charactersButton {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            border-radius: 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            z-index: 10;
-        }
-        /* Dropdown Menu */
-        #dropdownMenu {
-            display: none;
-            position: absolute;
-            top: 60px;
-            left: 20px;
-            width: 200px;
-            max-height: 250px;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
-            z-index: 10;
-        }
-        #dropdownMenu img {
-            width: 80%; /* Smaller images */
-            padding: 5px;
-            box-sizing: border-box;
-        }
-        /* Spawn Food Button */
-        #spawnFoodButton {
-            position: absolute;
-            bottom: 20px;
-            padding: 10px 20px;
-            border-radius: 10px;
-            background-color: #FF6347;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            z-index: 10;
-        }
-        /* Spawned Food Image */
-        .spawned-food {
-            position: absolute;
-            width: 60px;
-            transition: transform 0.2s;
-            z-index: 5;
-            touch-action: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webpage with Centered Image and Button Images</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .top-image {
+      margin-top: 20px;
+      width: 200px; /* Adjust width as needed */
+      height: auto;
+    }
+    .button-container {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .button-image {
+      width: 150px; /* Adjust width as needed */
+      height: auto;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <!-- Characters Button -->
-    <button id="charactersButton">Characters</button>
 
-    <!-- Dropdown Menu -->
-    <div id="dropdownMenu">
-        <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%208.png?raw=true" alt="Character 1">
-        <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%209.png?raw=true" alt="Character 2">
-    </div>
+  <!-- Top Centered Image -->
+  <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2012.png?raw=true" alt="Top Image" class="top-image">
 
-    <!-- Spawn Food Button -->
-    <button id="spawnFoodButton">Spawn Food</button>
+  <!-- Button Images Side by Side -->
+  <div class="button-container">
+    <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2013.png?raw=true" alt="Button 1" class="button-image" onclick="button1Action()">
+    <img src="path/to/button-image2.jpg" alt="Button 2" class="button-image" onclick="button2Action()">
+  </div>
 
-    <!-- Alternating Image -->
-    <img id="alternateImage" src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%204.png?raw=true" alt="Centered Image">
-    
-    <script>
-        const imageElement = document.getElementById("alternateImage");
-        const images = [
-            "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%204.png?raw=true",
-            "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%205.png?raw=true"
-        ];
-        let index = 0;
-        let interval;
+  <script>
+    function button1Action() {
+      alert("Button 1 clicked!");
+      // Add more functionality here for Button 1
+    }
 
-        function startAlternatingImages() {
-            interval = setInterval(() => {
-                index = (index + 1) % images.length;
-                imageElement.src = images[index];
-            }, 1000);
-        }
-
-        function stopAlternatingImages() {
-            clearInterval(interval);
-        }
-
-        // Start alternating images
-        startAlternatingImages();
-
-        // Change image on click for 2 seconds
-        imageElement.addEventListener("click", () => {
-            stopAlternatingImages();
-            imageElement.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%206.png?raw=true"; // Replace with the URL of your special image
-            
-            setTimeout(() => {
-                startAlternatingImages();
-            }, 2000);
-        });
-
-        // Characters button toggle dropdown menu
-        const charactersButton = document.getElementById("charactersButton");
-        const dropdownMenu = document.getElementById("dropdownMenu");
-
-        charactersButton.addEventListener("click", () => {
-            dropdownMenu.style.display = dropdownMenu.style.display === "none" ? "block" : "none";
-        });
-
-        // Spawn food functionality
-        const spawnFoodButton = document.getElementById("spawnFoodButton");
-
-        spawnFoodButton.addEventListener("click", () => {
-            // Create the food image element
-            const foodImage = document.createElement("img");
-            foodImage.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%2010.png?raw=true"; // Default food image
-            foodImage.classList.add("spawned-food");
-
-            // Set initial position
-            foodImage.style.left = "50%";
-            foodImage.style.top = "50%";
-            foodImage.style.transform = "translate(-50%, -50%)";
-
-            // Add drag event listeners
-            let isDragging = false;
-            let offsetX, offsetY;
-
-            foodImage.addEventListener("mousedown", startDrag);
-            foodImage.addEventListener("touchstart", startDrag);
-
-            function startDrag(e) {
-                e.preventDefault();
-                isDragging = true;
-
-                offsetX = e.clientX || e.touches[0].clientX;
-                offsetY = e.clientY || e.touches[0].clientY;
-
-                foodImage.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%2011.png?raw=true"; // Dragging food image
-
-                document.addEventListener("mousemove", drag);
-                document.addEventListener("mouseup", endDrag);
-                document.addEventListener("touchmove", drag);
-                document.addEventListener("touchend", endDrag);
-            }
-
-            function drag(e) {
-                if (!isDragging) return;
-
-                const clientX = e.clientX || e.touches[0].clientX;
-                const clientY = e.clientY || e.touches[0].clientY;
-
-                foodImage.style.left = `${foodImage.offsetLeft + clientX - offsetX}px`;
-                foodImage.style.top = `${foodImage.offsetTop + clientY - offsetY}px`;
-
-                offsetX = clientX;
-                offsetY = clientY;
-            }
-
-            function endDrag() {
-                isDragging = false;
-                foodImage.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%2010.png?raw=true"; // Default food image
-
-                document.removeEventListener("mousemove", drag);
-                document.removeEventListener("mouseup", endDrag);
-                document.removeEventListener("touchmove", drag);
-                document.removeEventListener("touchend", endDrag);
-            }
-
-            // Add food image to body
-            document.body.appendChild(foodImage);
-        });
-    </script>
+    function button2Action() {
+      alert("Button 2 clicked!");
+      // Add more functionality here for Button 2
+    }
+  </script>
+  
 </body>
 </html>
