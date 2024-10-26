@@ -19,9 +19,53 @@
             height: auto;
             cursor: pointer;
         }
+        /* Characters Button */
+        #charactersButton {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 10;
+        }
+        /* Dropdown Menu */
+        #dropdownMenu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            width: 200px;
+            max-height: 150px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            z-index: 10;
+        }
+        #dropdownMenu img {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
+    <!-- Characters Button -->
+    <button id="charactersButton">Characters</button>
+
+    <!-- Dropdown Menu -->
+    <div id="dropdownMenu">
+        <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%208.png?raw=true" alt="Character 1">
+        <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%209.png?raw=true" alt="Character 2">
+    </div>
+
+    <!-- Alternating Image -->
     <img id="alternateImage" src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%204.png?raw=true" alt="Centered Image">
     
     <script>
@@ -55,6 +99,14 @@
             setTimeout(() => {
                 startAlternatingImages();
             }, 2000);
+        });
+
+        // Characters button toggle dropdown menu
+        const charactersButton = document.getElementById("charactersButton");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+
+        charactersButton.addEventListener("click", () => {
+            dropdownMenu.style.display = dropdownMenu.style.display === "none" ? "block" : "none";
         });
     </script>
 </body>
