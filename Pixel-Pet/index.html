@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Image</title>
+    <title>Alternating Images</title>
     <style>
         body {
             display: flex;
@@ -20,6 +20,20 @@
     </style>
 </head>
 <body>
-    <img src="https://raw.githubusercontent.com/berrizscript/berrizscript.github.io/refs/heads/main/Assets/IMG_4068.png" alt="Centered Image">
+    <img id="alternateImage" src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%204.png?raw=true" alt="Centered Image">
+    
+    <script>
+        const imageElement = document.getElementById("alternateImage");
+        const images = [
+            "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%204.png?raw=true",
+            "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%205.png?raw=true" // Replace this URL with your second image
+        ];
+        let index = 0;
+
+        setInterval(() => {
+            index = (index + 1) % images.length;
+            imageElement.src = images[index];
+        }, 1000);
+    </script>
 </body>
 </html>
