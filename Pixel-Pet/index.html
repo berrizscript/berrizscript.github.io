@@ -31,20 +31,29 @@
             "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%205.png?raw=true"
         ];
         let index = 0;
+        let interval;
 
-        // Alternate images every second
-        setInterval(() => {
-            index = (index + 1) % images.length;
-            imageElement.src = images[index];
-        }, 1000);
+        function startAlternatingImages() {
+            interval = setInterval(() => {
+                index = (index + 1) % images.length;
+                imageElement.src = images[index];
+            }, 1000);
+        }
 
-        // Change image on click for 1 second
+        function stopAlternatingImages() {
+            clearInterval(interval);
+        }
+
+        // Start alternating images
+        startAlternatingImages();
+
+        // Change image on click for 2 seconds
         imageElement.addEventListener("click", () => {
-            const originalSrc = imageElement.src;
-            imageElement.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%206.png?raw=true"; // Replace with the URL of your temporary image
+            stopAlternatingImages();
+            imageElement.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%206.png?raw=true"; // Replace with the URL of your special image
             
             setTimeout(() => {
-                imageElement.src = originalSrc;
+                startAlternatingImages();
             }, 2000);
         });
     </script>
