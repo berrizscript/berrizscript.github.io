@@ -140,7 +140,7 @@
         spawnFoodButton.addEventListener("click", () => {
             // Create the food image element
             const foodImage = document.createElement("img");
-            foodImage.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%207.png?raw=true"; // Default food image
+            foodImage.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%2010.png?raw=true"; // Default food image
             foodImage.classList.add("spawned-food");
 
             // Set initial position
@@ -162,7 +162,7 @@
                 offsetX = e.clientX || e.touches[0].clientX;
                 offsetY = e.clientY || e.touches[0].clientY;
 
-                foodImage.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%208.png?raw=true"; // Dragging food image
+                foodImage.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%2011.png?raw=true"; // Dragging food image
 
                 document.addEventListener("mousemove", drag);
                 document.addEventListener("mouseup", endDrag);
