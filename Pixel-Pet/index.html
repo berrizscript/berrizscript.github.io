@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpage with Centered Image and Button Images</title>
+  <title>Pixel Menu</title>
   <style>
     body {
       display: flex;
@@ -12,10 +12,15 @@
       justify-content: center;
       margin: 0;
       font-family: Arial, sans-serif;
+      background-image: url('https://art.pixilart.com/sr28a6f7ac8cdaws3.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
     }
     .top-image {
       margin-top: 20px;
-      width: 200px; /* Adjust width as needed */
+      width: 200px;
       height: auto;
     }
     .button-container {
@@ -24,7 +29,7 @@
       margin-top: 20px;
     }
     .button-image {
-      width: 150px; /* Adjust width as needed */
+      width: 150px;
       height: auto;
       cursor: pointer;
     }
@@ -32,13 +37,16 @@
 </head>
 <body>
 
+  <!-- Audio Element with Autoplay -->
+  <audio src="https://raw.githubusercontent.com/berrizscript/berrizscript.github.io/refs/heads/main/Assets/PixLeaf/RPReplay_Final1729965609.aiff" autoplay></audio>
+
   <!-- Top Centered Image -->
   <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2012.png?raw=true" alt="Top Image" class="top-image">
 
   <!-- Button Images Side by Side -->
   <div class="button-container">
     <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2015.png?raw=true" alt="Button 1" class="button-image" onclick="button1Action()">
-    <img src="path/to/button-image2.jpg" alt="Button 2" class="button-image" onclick="button2Action()">
+    <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2016.png?raw=true" alt="Button 2" class="button-image" onclick="button2Action()">
   </div>
 
   <script>
