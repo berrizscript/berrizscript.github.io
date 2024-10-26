@@ -13,6 +13,7 @@
             margin: 0;
             background-color: #f0f0f0;
             overflow: hidden; /* Prevent scrolling */
+            position: relative;
         }
         img {
             max-width: 100%;
@@ -40,7 +41,7 @@
             top: 60px;
             left: 20px;
             width: 200px;
-            max-height: 150px;
+            max-height: 250px;
             background-color: white;
             border: 1px solid #ccc;
             border-radius: 10px;
@@ -49,9 +50,30 @@
             z-index: 10;
         }
         #dropdownMenu img {
-            width: 100%;
-            padding: 10px;
+            width: 80%; /* Smaller images */
+            padding: 5px;
             box-sizing: border-box;
+        }
+        /* Spawn Food Button */
+        #spawnFoodButton {
+            position: absolute;
+            bottom: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 10;
+        }
+        /* Spawned Food Image */
+        .spawned-food {
+            position: absolute;
+            width: 60px;
+            transition: transform 0.2s;
+            z-index: 5;
+            touch-action: none;
         }
     </style>
 </head>
@@ -61,9 +83,12 @@
 
     <!-- Dropdown Menu -->
     <div id="dropdownMenu">
-        <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%208.png?raw=true" alt="Character 1">
-        <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%209.png?raw=true" alt="Character 2">
+        <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%204.png?raw=true" alt="Character 1">
+        <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%205.png?raw=true" alt="Character 2">
     </div>
+
+    <!-- Spawn Food Button -->
+    <button id="spawnFoodButton">Spawn Food</button>
 
     <!-- Alternating Image -->
     <img id="alternateImage" src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%204.png?raw=true" alt="Centered Image">
@@ -107,6 +132,69 @@
 
         charactersButton.addEventListener("click", () => {
             dropdownMenu.style.display = dropdownMenu.style.display === "none" ? "block" : "none";
+        });
+
+        // Spawn food functionality
+        const spawnFoodButton = document.getElementById("spawnFoodButton");
+
+        spawnFoodButton.addEventListener("click", () => {
+            // Create the food image element
+            const foodImage = document.createElement("img");
+            foodImage.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%207.png?raw=true"; // Default food image
+            foodImage.classList.add("spawned-food");
+
+            // Set initial position
+            foodImage.style.left = "50%";
+            foodImage.style.top = "50%";
+            foodImage.style.transform = "translate(-50%, -50%)";
+
+            // Add drag event listeners
+            let isDragging = false;
+            let offsetX, offsetY;
+
+            foodImage.addEventListener("mousedown", startDrag);
+            foodImage.addEventListener("touchstart", startDrag);
+
+            function startDrag(e) {
+                e.preventDefault();
+                isDragging = true;
+
+                offsetX = e.clientX || e.touches[0].clientX;
+                offsetY = e.clientY || e.touches[0].clientY;
+
+                foodImage.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%208.png?raw=true"; // Dragging food image
+
+                document.addEventListener("mousemove", drag);
+                document.addEventListener("mouseup", endDrag);
+                document.addEventListener("touchmove", drag);
+                document.addEventListener("touchend", endDrag);
+            }
+
+            function drag(e) {
+                if (!isDragging) return;
+
+                const clientX = e.clientX || e.touches[0].clientX;
+                const clientY = e.clientY || e.touches[0].clientY;
+
+                foodImage.style.left = `${foodImage.offsetLeft + clientX - offsetX}px`;
+                foodImage.style.top = `${foodImage.offsetTop + clientY - offsetY}px`;
+
+                offsetX = clientX;
+                offsetY = clientY;
+            }
+
+            function endDrag() {
+                isDragging = false;
+                foodImage.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%2010.png?raw=true"; // Default food image
+
+                document.removeEventListener("mousemove", drag);
+                document.removeEventListener("mouseup", endDrag);
+                document.removeEventListener("touchmove", drag);
+                document.removeEventListener("touchend", endDrag);
+            }
+
+            // Add food image to body
+            document.body.appendChild(foodImage);
         });
     </script>
 </body>
