@@ -22,6 +22,7 @@
       margin-top: 20px;
       width: 300px;
       height: auto;
+      cursor: pointer;
     }
     .button-container {
       display: flex;
@@ -33,12 +34,6 @@
       height: auto;
       cursor: pointer;
     }
-    .play-button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
@@ -46,11 +41,8 @@
   <!-- Audio Element -->
   <audio id="background-audio" src="https://raw.githubusercontent.com/berrizscript/berrizscript.github.io/refs/heads/main/Assets/PixLeaf/RPReplay_Final1729965609.aiff"></audio>
 
-  <!-- Play Audio Button -->
-  <button class="play-button" onclick="playAudio()">Play Audio</button>
-
-  <!-- Top Centered Image -->
-  <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2012.png?raw=true" alt="Top Image" class="top-image">
+  <!-- Top Centered Image that plays audio when clicked -->
+  <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2012.png?raw=true" alt="Top Image" class="top-image" onclick="playAudio()">
 
   <!-- Button Images Side by Side -->
   <div class="button-container">
