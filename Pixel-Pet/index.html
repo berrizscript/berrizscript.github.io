@@ -12,10 +12,12 @@
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
+            overflow: hidden; /* Prevent scrolling */
         }
         img {
             max-width: 100%;
             height: auto;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -26,14 +28,25 @@
         const imageElement = document.getElementById("alternateImage");
         const images = [
             "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%204.png?raw=true",
-            "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%205.png?raw=true" // Replace this URL with your second image
+            "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%205.png?raw=true"
         ];
         let index = 0;
 
+        // Alternate images every second
         setInterval(() => {
             index = (index + 1) % images.length;
             imageElement.src = images[index];
         }, 1000);
+
+        // Change image on click for 1 second
+        imageElement.addEventListener("click", () => {
+            const originalSrc = imageElement.src;
+            imageElement.src = "https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/pixil-frame-0%206.png?raw=true"; // Replace with the URL of your temporary image
+            
+            setTimeout(() => {
+                imageElement.src = originalSrc;
+            }, 1000);
+        });
     </script>
 </body>
 </html>
