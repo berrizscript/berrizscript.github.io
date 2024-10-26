@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar with Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            margin: 0;
+        }
+        /* Main Sidebar */
+        .sidebar {
+            display: grid;
+            grid-template-rows: repeat(5, 1fr);
+            background-color: #333;
+            width: 150px; /* Adjusted width */
+            padding: 10px;
+        }
+        .sidebar button {
+            padding: 12px;
+            margin: 5px 0;
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .sidebar button:hover {
+            background-color: #777;
+        }
+        /* Icon Sidebar */
+        .icon-sidebar {
+            display: grid;
+            grid-template-rows: repeat(5, 1fr);
+            background-color: #444;
+            width: 50px;
+            align-items: center;
+            justify-items: center;
+            padding: 10px;
+        }
+        .icon-sidebar img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Sidebar with Text Buttons -->
+    <div class="sidebar">
+        <button>Create Text</button>
+        <button>Create Image</button>
+        <button>Create Button</button>
+        <button>Button 4</button>
+        <button>Button 5</button>
+    </div>
+    <!-- Smaller Sidebar with Icon Buttons -->
+    <div class="icon-sidebar">
+        <img src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/icons8-tree-48.png?raw=true" alt="Tree Icon">
+        <img src="icon2.png" alt="Icon 2">
+        <img src="icon3.png" alt="Icon 3">
+        <img src="icon4.png" alt="Icon 4">
+        <img src="icon5.png" alt="Icon 5">
+    </div>
+</body>
+</html>
