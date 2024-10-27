@@ -18,6 +18,7 @@
             position: absolute;
             width: 100px; /* Adjust size as needed */
             height: 100px;
+            transition: left 1s ease, top 1s ease; /* Slow movement */
         }
     </style>
 </head>
@@ -32,22 +33,27 @@
         image.style.left = `${(window.innerWidth - image.clientWidth) / 2}px`;
         image.style.top = `${(window.innerHeight - image.clientHeight) / 2}px`;
 
-        // Function to move the image randomly
         function moveRandomly() {
-            const maxX = window.innerWidth - image.clientWidth;
-            const maxY = window.innerHeight - image.clientHeight;
-            
-            // Generate random coordinates within the screen bounds
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
+            // Randomly decide whether to move
+            if (Math.random() > 0.7) { // 30% chance to move
+                const currentX = parseFloat(image.style.left);
+                const currentY = parseFloat(image.style.top);
 
-            // Smoothly move to the new position
-            image.style.transition = "left 0.5s, top 0.5s";
-            image.style.left = `${randomX}px`;
-            image.style.top = `${randomY}px`;
+                // Generate small random distances for X and Y
+                const deltaX = (Math.random() - 0.5) * 50; // Between -25 and +25
+                const deltaY = (Math.random() - 0.5) * 50; // Between -25 and +25
+
+                // Calculate the new position with bounds checking
+                const newX = Math.min(Math.max(currentX + deltaX, 0), window.innerWidth - image.clientWidth);
+                const newY = Math.min(Math.max(currentY + deltaY, 0), window.innerHeight - image.clientHeight);
+
+                // Update position
+                image.style.left = `${newX}px`;
+                image.style.top = `${newY}px`;
+            }
         }
 
-        // Move the image every 1 second
+        // Attempt to move every second
         setInterval(moveRandomly, 1000);
     </script>
 
