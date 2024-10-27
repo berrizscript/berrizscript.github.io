@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leafz!</title>
+    <title>Leafz!1</title>
     <style>
         html, body {
             margin: 0;
@@ -21,6 +21,14 @@
             height: 100px;
             transition: left 1s ease, top 1s ease;
         }
+        #cornerImage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80px; /* Adjust size as needed */
+            height: 80px;
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
@@ -28,7 +36,11 @@
     <!-- Audio element that plays on user interaction -->
     <audio id="backgroundAudio" src="https://github.com/berrizscript/berrizscript.github.io/raw/refs/heads/main/Assets/PixLeaf/ScreenRecording_10-27-2024%2012-58-25_1%204.mp3" loop></audio>
 
+    <!-- Moving Image -->
     <img id="movingImage" src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2017.png?raw=true" alt="Moving Image">
+
+    <!-- Static Image in the top-left corner -->
+    <img id="cornerImage" src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2018.png?raw=true" alt="Corner Image">
 
     <script>
         const audio = document.getElementById("backgroundAudio");
