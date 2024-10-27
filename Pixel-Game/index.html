@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Moving Image</title>
+    <title>Pixel Game</title>
     <style>
         body {
             margin: 0;
@@ -18,7 +18,7 @@
             position: absolute;
             width: 100px; /* Adjust size as needed */
             height: 100px;
-            transition: left 1s ease, top 1s ease; /* Slow movement */
+            transition: left 1s ease, top 1s ease;
         }
     </style>
 </head>
@@ -34,14 +34,14 @@
         image.style.top = `${(window.innerHeight - image.clientHeight) / 2}px`;
 
         function moveRandomly() {
-            // Randomly decide whether to move
-            if (Math.random() > 0.7) { // 30% chance to move
+            // Adjusted probability for more frequent movement (70% chance)
+            if (Math.random() > 0.3) {
                 const currentX = parseFloat(image.style.left);
                 const currentY = parseFloat(image.style.top);
 
-                // Generate small random distances for X and Y
-                const deltaX = (Math.random() - 0.5) * 50; // Between -25 and +25
-                const deltaY = (Math.random() - 0.5) * 50; // Between -25 and +25
+                // Increase movement range for a more noticeable shift
+                const deltaX = (Math.random() - 0.5) * 100; // Between -50 and +50
+                const deltaY = (Math.random() - 0.5) * 100; // Between -50 and +50
 
                 // Calculate the new position with bounds checking
                 const newX = Math.min(Math.max(currentX + deltaX, 0), window.innerWidth - image.clientWidth);
@@ -53,8 +53,8 @@
             }
         }
 
-        // Attempt to move every second
-        setInterval(moveRandomly, 1000);
+        // Attempt to move every 1.5 seconds for a smoother, less random effect
+        setInterval(moveRandomly, 1500);
     </script>
 
 </body>
