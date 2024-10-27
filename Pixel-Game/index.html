@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Moving Image with Audio</title>
+    <title>Leafz!</title>
     <style>
         html, body {
             margin: 0;
@@ -25,26 +25,25 @@
 </head>
 <body>
 
-    <!-- Audio element that plays on load -->
-    <audio id="backgroundAudio" src="https://github.com/berrizscript/berrizscript.github.io/raw/refs/heads/main/Assets/PixLeaf/ScreenRecording_10-27-2024%2012-58-25_1%204.mp3" autoplay loop muted></audio>
+    <!-- Audio element that plays on user interaction -->
+    <audio id="backgroundAudio" src="https://github.com/berrizscript/berrizscript.github.io/raw/refs/heads/main/Assets/PixLeaf/ScreenRecording_10-27-2024%2012-58-25_1%204.mp3" loop></audio>
 
     <img id="movingImage" src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2017.png?raw=true" alt="Moving Image">
 
     <script>
-        // Enable sound when the page is interacted with to work around Safari's autoplay policies
         const audio = document.getElementById("backgroundAudio");
-
-        window.addEventListener('load', () => {
-            // Set muted to false after user interaction to comply with autoplay policies
-            audio.muted = false;
-            audio.play().catch(error => console.log("Audio autoplay was blocked:", error));
-        });
-
         const image = document.getElementById("movingImage");
 
         // Set initial position to the center of the page
         image.style.left = `${(window.innerWidth - image.clientWidth) / 2}px`;
         image.style.top = `${(window.innerHeight - image.clientHeight) / 2}px`;
+
+        // Play audio on first user interaction (click)
+        function playAudio() {
+            audio.play().catch(error => console.log("Audio autoplay was blocked:", error));
+            document.removeEventListener('click', playAudio); // Remove listener after first play
+        }
+        document.addEventListener('click', playAudio);
 
         function moveRandomly() {
             // Decide whether to move or pause (25% chance to pause for 1 second)
