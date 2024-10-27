@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Moving Image</title>
+    <title>Random Moving Image with Audio</title>
     <style>
-        body {
+        html, body {
             margin: 0;
-            overflow: hidden;
+            overflow: hidden; /* Prevents scrolling */
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             background-color: #f0f0f0;
         }
         #movingImage {
@@ -24,9 +25,21 @@
 </head>
 <body>
 
+    <!-- Audio element that plays on load -->
+    <audio id="backgroundAudio" src="https://github.com/berrizscript/berrizscript.github.io/raw/refs/heads/main/Assets/PixLeaf/ScreenRecording_10-27-2024%2012-58-25_1%204.mp3" autoplay loop muted></audio>
+
     <img id="movingImage" src="https://github.com/berrizscript/berrizscript.github.io/blob/main/Assets/PixLeaf/pixil-frame-0%2017.png?raw=true" alt="Moving Image">
 
     <script>
+        // Enable sound when the page is interacted with to work around Safari's autoplay policies
+        const audio = document.getElementById("backgroundAudio");
+
+        window.addEventListener('load', () => {
+            // Set muted to false after user interaction to comply with autoplay policies
+            audio.muted = false;
+            audio.play().catch(error => console.log("Audio autoplay was blocked:", error));
+        });
+
         const image = document.getElementById("movingImage");
 
         // Set initial position to the center of the page
