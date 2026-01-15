@@ -3,97 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to my page!</title>
-    <link rel="icon" type="image/png" href="folder/IMG_4067.png">
+    <title>New Project</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f9;
-        }
-        .container {
-            text-align: center;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: -150px; /* Adjusts initial position */
-        }
-        h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .button-container {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        .button-group {
-            text-align: center;
-        }
-        .rounded-button {
-            padding: 10px 20px;
-            background-color: #165B33;
-            color: white;
-            font-size: 18px;
+        #btn-click {
+            background-color: rgb(128, 128, 128);
             border: none;
+            padding: 10px 20px;
+            color: white;   
             border-radius: 50px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            box-shadow: 0 4px 0 rgb(100, 100, 100);
+            transition: all 0.1s ease;
         }
-        .rounded-button:hover {
-            background-color: #146B3A;
+        #btn-click:active {
+            box-shadow: none;
+            transform: translateY(4px);
         }
-        p {
-            font-size: 14px;
-            color: #555;
-            margin-top: 10px;
+
+        .title-cool {
+            background-color: grey;
+            padding: 10px;
+            border-radius: 15px
         }
-        .secondary-container {
-            text-align: center;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to my page!</h1>
-        <div class="button-container">
-            <div class="button-group">
-                <button class="rounded-button" onclick="window.location.href='https://berrizscript.github.io/Testing-Place'">Testing Place</button>
-                <p>Easily insert javascript!</p>
-            </div>
-            <div class="button-group">
-                <button class="rounded-button" onclick="window.location.href='#'">My Javascripts</button>
-                <p>Drag and Drop js or click to try!</p>
-            </div>
-        </div>
-    </div>
+<h1 class="title-cool">Clicker Game</h1>
+<p id="circle-text">Clicks = 0</p>
+<button id="btn-click">Click Me!</button> 
 
-    <!-- Second rounded square container for "Misc" section -->
-    <div class="secondary-container">
-        <h1>Misc</h1>
-        <div class="button-container">
-            <div class="button-group">
-                <button class="rounded-button" onclick="window.location.href='https://berrizscript.github.io/Pixel-Pet'">Pixel Pet</button>
-                <p>Have fun with sum funny characters ;v;</p>
-            </div>
-            <div class="button-group">
-                <button class="rounded-button" onclick="window.location.href='#'">WIP</button>
-                <p>Sorry not anything yet!</p>
-            </div>
-        </div>
-    </div>
+<script>
+    const btn = document.getElementById('btn-click');
+    const circleText = document.getElementById('circle-text');
+
+</script>
 </body>
 </html>
